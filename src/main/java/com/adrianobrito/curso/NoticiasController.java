@@ -11,10 +11,22 @@ import br.com.caelum.vraptor.Result;
 @Controller
 public class NoticiasController {
 
-	@Inject private Result result;
+	private final Result result;
+
+	/**
+	 * @deprecated CDI eyes only
+	 */
+	protected NoticiasController() {
+		this(null);
+	}
+	
+	@Inject
+	public NoticiasController(Result result) {
+		this.result = result;
+	}
 	
 	@Get
-	public void home(){
+	public void teste(){
 		result.use(http()).body("Hello world").setStatusCode(200);
 	}
 	
