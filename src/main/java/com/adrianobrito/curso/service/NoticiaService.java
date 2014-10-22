@@ -34,8 +34,8 @@ public class NoticiaService {
 		return noticias;
 	}
 	
-	public void imprimir(){
-		System.out.println("Noticias");
+	public void delete(Noticia noticia){
+		noticias.remove(noticia.getId().intValue());
 	}
 	
 }
