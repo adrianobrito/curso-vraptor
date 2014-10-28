@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 import static br.com.caelum.vraptor.view.Results.*;
 
 import com.adrianobrito.curso.model.Noticia;
@@ -28,7 +29,7 @@ public class NoticiasController {
 	@Consumes("application/json")
 	public void add(Noticia noticia){
 		noticiaService.save(noticia);
-		result.use(status()).ok();
+		result.use(status()).noContent();
 	}
 	
 	@Get("/")

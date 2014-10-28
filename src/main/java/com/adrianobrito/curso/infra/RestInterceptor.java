@@ -23,7 +23,11 @@ public class RestInterceptor implements Interceptor{
 	@Override
 	public void intercept(InterceptorStack stack, ControllerMethod controllerMethod,
 			Object resource) throws InterceptionException {
-		try {  
+
+		result.use(Results.http()).addHeader("Access-Control-Allow-Origin", "*");
+		result.use(Results.http()).addHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		
+		try { 
             stack.next(controllerMethod, resource);  
         } catch (Exception ex) {  
         	result.use(Results.http()).body(ex.getMessage()).setStatusCode(500);
