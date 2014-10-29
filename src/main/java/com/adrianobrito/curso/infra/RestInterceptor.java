@@ -24,6 +24,7 @@ public class RestInterceptor implements Interceptor{
 	public void intercept(InterceptorStack stack, ControllerMethod controllerMethod,
 			Object resource) throws InterceptionException {
 
+		result.use(Results.http()).addHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE, PUT");
 		result.use(Results.http()).addHeader("Access-Control-Allow-Origin", "*");
 		result.use(Results.http()).addHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 		
